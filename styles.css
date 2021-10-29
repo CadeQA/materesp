@@ -1,0 +1,126 @@
+* {
+	font-family: "Open Sans", sans-serif;
+  }
+  :root {
+	--main-radius: 15px;
+	--main-padding: 15px;
+  }
+  
+  body {
+	font-family: "Open Sans", sans-serif;
+  }
+  
+  .container {
+	display: grid;
+	height: 100vh;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 0.2fr 1.6fr 1.2fr 0.8fr;
+	grid-template-areas:
+	  "nav nav nav nav"
+	  "sidebar main main main"
+	  "sidebar content1 content2 content3"
+	  "sidebar footer footer footer";
+	grid-gap: 0.2rem;
+	font-weight: 900;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #3b7dd8;
+	text-align: center;
+  }
+  
+  .header {
+	background: white;
+	grid-area: nav;
+	border-radius: var(--main-radius);
+	padding-top: var(--main-padding);
+	align-content: center;
+  }
+  
+  .logo {
+	height: 8rem;
+	padding-top: var(--main-padding);
+	margin-left: 8%;
+  }
+  
+  main {
+	background-image: url(./images/clinica1.jpg);
+	background-position: center;
+	grid-area: main;
+	border-radius: var(--main-radius);
+	padding-top: var(--main-padding);
+  }
+  
+  .clinicName {
+	color: #3b7dd8;
+	text-align: center;
+	border-radius: var(--main-radius);
+	padding-top: var(--main-padding);
+  }
+  
+  #sidebar {
+	background: white;
+	grid-area: sidebar;
+	position: center;
+	border-radius: var(--main-radius);
+	padding-top: 0;
+	margin: 0;
+  }
+  
+  #content1 {
+	background: #bfd6f6;
+	grid-area: content1;
+	border-radius: var(--main-radius);
+	padding-top: var(--main-padding);
+	margin: 2.3em;
+  }
+  
+  #content2 {
+	background: #bfd6f6;
+	grid-area: content2;
+	align-content: center;
+	border-radius: var(--main-radius);
+	padding-top: var(--main-padding);
+	margin: 2.3em;
+  }
+  
+  #content3 {
+	background: #bfd6f6;
+	grid-area: content3;
+	border-radius: var(--main-radius);
+	padding-top: var(--main-padding);
+	margin: 2.3em;
+  }
+  
+  footer {
+	color: #3b7dd8;
+	grid-area: footer;
+	border-radius: var(--main-radius);
+	padding-top: var(--main-padding);
+	margin: 0;
+  }
+  
+  a {
+	color: #3b7dd8;
+	text-align: center;
+	display: block;
+	font-family: inherit;
+	text-decoration: none;
+	font-weight: bold;
+	margin: 1rem;
+  }
+  
+  @media only screen and (max-width: 550px) {
+	.container {
+	  grid-template-columns: 1fr;
+	  grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1.2fr 1.2fr 1fr;
+	  grid-template-areas:
+		"header"
+		"sidebar"
+		"main"
+		"content1"
+		"content2"
+		"content3"
+		"footer";
+	}
+  }
+  
