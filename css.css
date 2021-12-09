@@ -1,0 +1,269 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+:root {
+  --background: white;
+  --main-radius: 10px;
+  --main-padding: 10px;
+}
+
+body {
+  background-color: white;
+}
+
+.content {
+  display: grid;
+  height: 110vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "nav nav nav"
+    "main main main"
+    "content1 content2 content3"
+    "footer footer footer";
+  grid-gap: 0.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #3b7dd8;
+  text-align: center;
+}
+
+.logo {
+  height: 8rem;
+  padding-top: var(--main-padding);
+  margin-left: 30px;
+}
+
+header {
+  background: var(--background);
+  text-transform: uppercase;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+}
+
+.clinicName {
+  color: #3b7dd8;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+main {
+  background-image: url(images/clinica1.jpg);
+  grid-area: main;
+  align-content: center;
+  border-radius: var(--main-radius);
+  margin: 1.2em;
+}
+
+#content1 {
+  background: #bfd6f6;
+  grid-area: content1;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+  margin: 2.3em;
+}
+
+#content2 {
+  background: #bfd6f6;
+  grid-area: content2;
+  align-content: center;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+  margin: 2.3em;
+}
+
+#content3 {
+  background: #bfd6f6;
+  grid-area: content3;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+  margin: 2.3em;
+}
+
+footer {
+  color: #3b7dd8;
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+  margin: 0;
+}
+
+a {
+  color: #3b7dd8;
+  text-align: center;
+  display: block;
+  font-family: inherit;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.nav-toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba(lightblue, 0.75);
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: #3b7dd8;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--background);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+  margin: 30px;
+  padding: 15px;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a {
+  color: #3b7dd8;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: #93bffd;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 600px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header {
+    display: flex;
+    grid-template-columns: 1fr auto minmax(0px, 3fr) 1fr;
+  }
+
+  content {
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "main"
+      "content1"
+      "content2"
+      "content3"
+      "footer";
+  }
+
+  .logo {
+    grid-column: 2 / 3;
+  }
+
+  nav {
+    // all: unset;
+    /* Código necesario para la funcionalidad de la barra de navegación */
+    position: relative;
+    text-align: left;
+    transition: none;
+    transform: scale(1, 1);
+    background: none;
+    top: initial;
+    left: initial;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+
+  nav a::before {
+    content: "";
+    display: block;
+    height: 5px;
+    background: #3b7dd8;
+    position: absolute;
+    top: -0.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+
+  nav a:hover::before {
+    transform: scale(1, 1);
+  }
+}

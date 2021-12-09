@@ -3,32 +3,47 @@
   <!--Carmen Cabrera De Piérola-->
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="./images/favicon-32x32.png" sizes="32x32" />
-    <title>Centro Nefrológico Mater Esperanza </title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <title>Turnos para el Centro Nefrológico Mater Esperanza </title>
+    <link rel="stylesheet" href="serviciosstyle.css">
     <!-- Fuente Google -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <!-- CSS -->
-    <link rel="stylesheet" href="serviciosstyle.css">
     <!-- Iconos de FontAwesome -->
     <script src="https://kit.fontawesome.com/fe2f22c788.js" crossorigin="anonymous"></script>
+    <!-- CSS Animación -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   </head>
   <body>
-    <div class="titulo">
-      <h1>Nuestros Servicios</h1>
-    </div>
-    <div class="logo">
-      <p>
-        <img src="./images/logonefro.png" alt="Logo del Centro Nefrológico" onclick="window.location.href='index.html'">
-      </p>
-    </div>
+    <header class="header">
+      <img src="images/logonefro.png" alt="Logo del Centro Nefrológico" class="logos" a href="#index">Mater Esperanza Centro de Nefrología </a>
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn">
+        <span class="navicon"></span>
+      </label>
+      <ul class="menu">
+        <li>
+          <a href="index.html">Inicio</a>
+        </li>
+        <li>
+          <a href="turnos.html">Turnos</a>
+        </li>
+        <li>
+          <a href="servicios.html">Servicios</a>
+        </li>
+        <li>
+          <a href="nosotros.html">Nosotros</a>
+        </li>
+      </ul>
+    </header>
+    <div class="titulo"></div>
     <div class="servicios">
       <div class="card">
         <i class="icon fas fa-medkit"></i>
         <h1>Hemodiálisis</h1>
         <div class="content">
-          <p>La hemodiálisis es un tratamiento para filtrar las toxinas y el agua de la sangre, como lo hacían los riñones cuando estaban sanos. El paciente debe realizar hemodiálisis tres días a la semana en días alternos durante sesiones de entre cuatro o cinco horas. En algunos casos, puede ser necesario aumentar la frecuencia o la duración de las sesiones de hemodiálisis. Este proceso podrá realizarse en nuestro centro especializado.</p>
+          <p>La hemodiálisis es un tratamiento para filtrar las toxinas y el agua de la sangre, como lo hacían los riñones cuando estaban sanos. El paciente debe realizar hemodiálisis tres días a la semana en días alternos durante sesiones de entre cuatro o cinco horas. necesario aumentar la frecuencia o la duración de las sesiones de hemodiálisis. Este proceso podrá realizarse en nuestro centro especializado.</p>
         </div>
       </div>
       <div class="card">

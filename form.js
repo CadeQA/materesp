@@ -1,29 +1,73 @@
-let form = document.getElementById('Form'),
-     fullname = document.getElementById('fullname'), 
-     email = document.getElementById('email'), 
-     phone = document.getElementById('phone'), 
-     affair = document.getElementById('affair'); 
-
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
-
-// Revisar si cada campo está completo
-if (fullname.value.lenght == 0 || email.value.length == 0 || phone.value.lenght == 0 || affair.value.lenght == 0 ){
-    alert ('Error: Debes completar todos los campos.')
-    return;
-}
-
-// Revisar si el e-mail es válido
-if (!validateEmail(email.value)){
-    alert('Error: el formato del e-mail no es válido.')
-    return;
-}
-
-// Envío exitoso
-alert ('Gracias por tu mensaje. Nos comunicaremos en breve.')
-})
-
-function validateEmail(email) {
-    let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
+(function () {
+	"use strict";
+	/*
+	 * Form Validación
+	 */
+  
+	
+	const forms = document.querySelectorAll(".needs-validation");
+	const result = document.getElementById("result");
+	
+	Array.prototype.slice.call(forms).forEach(function (form) {
+	  form.addEventListener(
+		"submit",
+		function (event) {
+		  if (!form.checkValidity()) {
+			event.preventDefault();
+			event.stopPropagation();
+  
+			form.querySelectorAll(":invalid")[0].focus();
+		  } else {
+			/*
+			 * Form Submission using fetch()
+			 */
+  
+			const formData = new FormData(form);
+			event.preventDefault();
+			event.stopPropagation();
+			const object = {};
+			formData.forEach((value, key) => {
+			  object[key] = value;
+			});
+			const json = JSON.stringify(object);
+			result.innerHTML = "Por favor, espere...";
+  
+			fetch("https://api.web3forms.com/submit", {
+			  method: "POST",
+			  headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json"
+			  },
+			  body: json
+			})
+			  .then(async (response) => {
+				let json = await response.json();
+				if (response.status == 200) {
+				  result.innerHTML = json.message;
+				  result.classList.remove("text-gray-500");
+				  result.classList.add("text-green-500");
+				} else {
+				  console.log(response);
+				  result.innerHTML = json.message;
+				  result.classList.remove("text-gray-500");
+				  result.classList.add("text-red-500");
+				}
+			  })
+			  .catch((error) => {
+				console.log(error);
+				result.innerHTML = "'Hay un error'!";
+			  })
+			  .then(function () {
+				form.reset();
+				form.classList.remove("was-validated");
+				setTimeout(() => {
+				  result.style.display = "none";
+				}, 5000);
+			  });
+		  }
+		  form.classList.add("was-validated");
+		},
+		false
+	  );
+	});
+  })();
